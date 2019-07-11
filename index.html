@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+  <title>Rock Paper Scissors
+  </title>
+</head>
+
+<body> 
+    
+  <div id="game">
+
+  <p>You chose: <span id="userGuess">?</span></p>
+  <p>Computer chose: <span id="computerGuess">?</span></p>
+  <p>wins: <span id="w">0</span></p>
+  <p>losses: <span id="l">0</span></p>
+  <p>ties: <span id="t">0</span></p>
+
+
+  </div>
+
+  <script type="text/javascript">
+
+    // An array that lists out all of the options (Rock, Paper, or Scissors), and variables
+    var computerChoices = ["r", "p", "s"];
+    var computerGuess = document.getElementById("computerGuess");
+    var userGuess = document.getElementById("userGuess");
+    var win = document.getElementById("w");
+    var loss = document.getElementById("l");
+    var tie = document.getElementById("t");
+    var l = 0;
+    var w = 0;
+    var t = 0;
+    
+    // This function is run whenever the user presses a key.
+    document.onkeyup = function(event) {
+
+      var userChoice = event.key;
+       userGuess.textContent = userChoice;
+      
+      
+
+      // Random number generated and used to select from the array of choices - this is the Computer's guess.
+      var computerSelection = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      computerGuess.textContent = computerSelection;
+      
+    
+
+      // Alerts the key the user pressed (userGuess).
+      alert("User guess: " + userChoice);
+
+      // Alerts the Computer's guess.
+      alert("Computer guess: " + computerSelection);
+
+    
+      // If/else that takes game conditions and increments wins, losses, and ties. 
+
+      if (userChoice === computerSelection) {
+        t++;
+        console.log(t);
+        tie.textContent = t;
+      } else if ( (userChoice === "r" && computerSelection === "s") || (userChoice === "p" && computerSelection === "r") || (userChoice === "s" && computerSelection === "p") ) {
+        w++;
+        console.log(w);
+        win.textContent = w;
+      } else if ( (userChoice === "r" && computerSelection === "p") || (userChoice === "s" && computerSelection === "r") || (userChoice === "p" && computerSelection === "s") ) {
+        l++;
+        console.log(l);
+        loss.textContent = l;
+      } else { 
+        alert("Learn how to play rock paper scissors, loser");
+      }
+      
+    };
+
+    
+  </script>
+
+</body>
+
+</html>
